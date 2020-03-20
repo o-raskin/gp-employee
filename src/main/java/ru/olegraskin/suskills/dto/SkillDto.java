@@ -1,4 +1,4 @@
-package ru.olegraskin.employee.dto;
+package ru.olegraskin.suskills.dto;
 
 import lombok.Data;
 

@@ -1,19 +1,21 @@
-package ru.olegraskin.employee.domain;
+package ru.olegraskin.suskills.dto;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-@Data
-@Entity
-public class SuccessCriterion {
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class SuccessCriterionDto {
 
-    @Id
-    @GeneratedValue
-    private long id;
+    private Long id;
 
     @Size(min = 3, max = 250)
     @NotNull
@@ -25,8 +27,4 @@ public class SuccessCriterion {
     private boolean achieved;
 
     private LocalDate finishDate;
-
-    @ManyToOne(cascade = {CascadeType.DETACH})
-    @JoinColumn(name = "skill_id")
-    private Skill skill;
 }

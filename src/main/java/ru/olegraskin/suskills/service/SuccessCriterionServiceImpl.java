@@ -1,18 +1,13 @@
-package ru.olegraskin.employee.service;
+package ru.olegraskin.suskills.service;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.olegraskin.employee.domain.Skill;
-import ru.olegraskin.employee.domain.SuccessCriterion;
-import ru.olegraskin.employee.repository.SkillRepository;
-import ru.olegraskin.employee.repository.SuccessCriterionRepository;
-import ru.olegraskin.employee.service.exception.SkillNotFoundException;
-import ru.olegraskin.employee.service.exception.SuccessCriteriaNotFoundException;
+import ru.olegraskin.suskills.domain.SuccessCriterion;
+import ru.olegraskin.suskills.repository.SuccessCriterionRepository;
+import ru.olegraskin.suskills.service.exception.SuccessCriteriaNotFoundException;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor

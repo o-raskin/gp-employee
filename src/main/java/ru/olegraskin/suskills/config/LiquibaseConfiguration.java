@@ -1,4 +1,4 @@
-package ru.olegraskin.employee.config;
+package ru.olegraskin.suskills.config;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.slf4j.Logger;

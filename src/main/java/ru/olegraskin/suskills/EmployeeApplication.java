@@ -1,4 +1,4 @@
-package ru.olegraskin.employee;
+package ru.olegraskin.suskills;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

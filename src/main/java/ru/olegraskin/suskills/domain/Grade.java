@@ -1,4 +1,4 @@
-package ru.olegraskin.employee.domain;
+package ru.olegraskin.suskills.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

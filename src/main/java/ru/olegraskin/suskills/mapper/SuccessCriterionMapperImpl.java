@@ -1,10 +1,10 @@
-package ru.olegraskin.employee.mapper;
+package ru.olegraskin.suskills.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import ru.olegraskin.employee.domain.SuccessCriterion;
-import ru.olegraskin.employee.dto.SuccessCriterionDto;
+import ru.olegraskin.suskills.domain.SuccessCriterion;
+import ru.olegraskin.suskills.dto.SuccessCriterionDto;
 
 @Component
 @RequiredArgsConstructor

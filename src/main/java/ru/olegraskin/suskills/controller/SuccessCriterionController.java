@@ -1,14 +1,12 @@
-package ru.olegraskin.employee.controller;
+package ru.olegraskin.suskills.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import ru.olegraskin.employee.domain.SuccessCriterion;
-import ru.olegraskin.employee.dto.SuccessCriterionDto;
-import ru.olegraskin.employee.mapper.SuccessCriterionMapper;
-import ru.olegraskin.employee.service.SuccessCriterionService;
-
-import javax.validation.Valid;
+import ru.olegraskin.suskills.domain.SuccessCriterion;
+import ru.olegraskin.suskills.dto.SuccessCriterionDto;
+import ru.olegraskin.suskills.mapper.SuccessCriterionMapper;
+import ru.olegraskin.suskills.service.SuccessCriterionService;
 
 @RestController
 @RequestMapping(

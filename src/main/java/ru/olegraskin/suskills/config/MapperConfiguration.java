@@ -1,4 +1,4 @@
-package ru.olegraskin.employee.config;
+package ru.olegraskin.suskills.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

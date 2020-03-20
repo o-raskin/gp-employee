@@ -1,6 +1,6 @@
-package ru.olegraskin.employee.service;
+package ru.olegraskin.suskills.service;
 
-import ru.olegraskin.employee.domain.SuccessCriterion;
+import ru.olegraskin.suskills.domain.SuccessCriterion;
 
 public interface SuccessCriterionService {
 

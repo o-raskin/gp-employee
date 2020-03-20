@@ -1,11 +1,11 @@
-package ru.olegraskin.employee.service;
+package ru.olegraskin.suskills.service;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.olegraskin.employee.domain.Skill;
-import ru.olegraskin.employee.repository.SkillRepository;
-import ru.olegraskin.employee.service.exception.SkillNotFoundException;
+import ru.olegraskin.suskills.domain.Skill;
+import ru.olegraskin.suskills.repository.SkillRepository;
+import ru.olegraskin.suskills.service.exception.SkillNotFoundException;
 
 import java.util.HashSet;
 import java.util.Optional;

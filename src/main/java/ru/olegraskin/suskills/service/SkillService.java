@@ -1,6 +1,6 @@
-package ru.olegraskin.employee.service;
+package ru.olegraskin.suskills.service;
 
-import ru.olegraskin.employee.domain.Skill;
+import ru.olegraskin.suskills.domain.Skill;
 
 import java.util.Set;
 

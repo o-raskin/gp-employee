@@ -1,12 +1,12 @@
-package ru.olegraskin.employee.controller;
+package ru.olegraskin.suskills.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import ru.olegraskin.employee.domain.Skill;
-import ru.olegraskin.employee.dto.SkillDto;
-import ru.olegraskin.employee.mapper.SkillMapper;
-import ru.olegraskin.employee.service.SkillService;
+import ru.olegraskin.suskills.domain.Skill;
+import ru.olegraskin.suskills.dto.SkillDto;
+import ru.olegraskin.suskills.mapper.SkillMapper;
+import ru.olegraskin.suskills.service.SkillService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
