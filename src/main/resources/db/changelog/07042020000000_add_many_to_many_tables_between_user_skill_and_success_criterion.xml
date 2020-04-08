@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="07042020000000" author="olegraskin">
+
+        <createTable tableName="user_skill">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="user_id" references="users(id)"/>
+            </column>
+            <column name="skill_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="skill_id" references="skill(id)"/>
+            </column>
+            <column name="start_date" type="date"/>
+            <column name="end_date" type="date"/>
+            <column name="status" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="user_id, skill_id"
+                       constraintName="pk_user_skill"
+                       schemaName="public"
+                       tableName="user_skill"/>
+
+
+        <createTable tableName="user_success_criterion">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="user_id" references="users(id)"/>
+            </column>
+            <column name="success_criterion_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="success_criterion_id" references="success_criterion(id)"/>
+            </column>
+            <column name="finish_date" type="date"/>
+            <column name="achieved" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="user_id, success_criterion_id"
+                       constraintName="pk_user_success_criterion"
+                       schemaName="public"
+                       tableName="user_success_criterion"/>
+
+    </changeSet>
+</databaseChangeLog>

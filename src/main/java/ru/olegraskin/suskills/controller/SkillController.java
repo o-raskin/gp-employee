@@ -16,8 +16,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(
         value = "/skills",
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        consumes = MediaType.APPLICATION_JSON_VALUE
+        produces = MediaType.APPLICATION_JSON_VALUE
 )
 @RequiredArgsConstructor
 public class SkillController {
@@ -39,14 +38,15 @@ public class SkillController {
     }
 
     @PostMapping
-    public SkillDto createSkill(@Valid @NotNull @RequestBody SkillDto dto) {
+    public SkillDto createSkill(@Valid @RequestBody SkillDto dto) {
         Skill skill = skillMapper.convertToEntity(dto);
         Skill savedSkill = skillService.save(skill);
         return skillMapper.convertToDTO(savedSkill);
     }
 
     @PutMapping("/{id}")
-    public SkillDto updateSkill(@PathVariable("id") Long id, @Valid SkillDto skillDto) {
+    public SkillDto updateSkill(@PathVariable("id") Long id,
+                                @Valid @RequestBody SkillDto skillDto) {
         skillDto.setId(id);
         Skill skill = skillMapper.convertToEntity(skillDto);
         Skill updatedSkill = skillService.update(skill);

@@ -1,6 +1,9 @@
+server:
+  port: 8081
+
 spring:
   application:
-    name: employee
+    name: skills
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -8,15 +11,14 @@ spring:
     url: jdbc:postgresql://localhost:5441/postgres
     username: postgres
     password:
-server:
-  port: 8081
+
 eureka:
   client:
     registry-fetch-interval-seconds: 10
   serviceUrl:
     defaultZone: http://localhost:8761/eureka
   instance:
-    appname: employee
-    instance-id: employee:${spring.application.instance-id:${random.value}}
+    appname: skills
+    instance-id: skills:${spring.application.instance-id:${random.value}}
     prefer-ip-address: true
 

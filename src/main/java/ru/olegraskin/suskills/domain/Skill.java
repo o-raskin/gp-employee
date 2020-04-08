@@ -1,24 +1,22 @@
 package ru.olegraskin.suskills.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Entity
+@Data
+@NoArgsConstructor
 public class Skill {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
     @NotNull
@@ -28,44 +26,30 @@ public class Skill {
     @Size(max = 1000)
     private String description;
 
+    @EqualsAndHashCode.Exclude
     @ManyToOne(cascade = {CascadeType.DETACH})
     @JoinColumn(name = "parent_id")
     private Skill parent;
 
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
     private Set<Skill> children = new HashSet<>();
 
-    @NotNull
-    private LocalDate startDate;
-
-    private LocalDate endDate;
-
-    @NotNull
-    @Enumerated
-    private Status status;
-
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "skill", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<SuccessCriterion> successCriteria = new HashSet<>();
 
-    public enum Status {
-        /**
-         * When skill not mandatory to get next grade.
-         */
-        NOT_MANDATORY,
+    @EqualsAndHashCode.Exclude
+    @OneToMany(
+            mappedBy = "skill",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<UserSkill> users = new HashSet<>();
 
-        /**
-         * When skill mandatory to get next grade.
-         */
-        NEED_TO_KNOW,
+    @EqualsAndHashCode.Exclude
+    @ManyToOne(cascade = {CascadeType.DETACH})
+    @JoinColumn(name = "grade_id")
+    private Grade grade;
 
-        /**
-         * When skill on pending for approving.
-         */
-        PENDING,
-
-        /**
-         * Skill approved.
-         */
-        APPROVED,
-    }
 }

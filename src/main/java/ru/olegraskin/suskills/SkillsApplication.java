@@ -7,10 +7,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties(LiquibaseProperties.class)
-public class EmployeeApplication {
+public class SkillsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeeApplication.class, args);
+		SpringApplication.run(SkillsApplication.class, args);
 	}
 
 }

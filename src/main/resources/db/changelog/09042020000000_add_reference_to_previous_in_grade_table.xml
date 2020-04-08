@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="09042020000000" author="olegraskin">
+
+        <addColumn tableName="grade">
+            <column name="previous_grade_id" type="BIGINT">
+                <constraints foreignKeyName="previous_grade_id" references="grade(id)"/>
+            </column>
+        </addColumn>
+
+        <addUniqueConstraint columnNames="previous_grade_id, position_id"
+                             constraintName="grade_position_unique_const"
+                             schemaName="public"
+                             tableName="grade"/>
+
+    </changeSet>
+</databaseChangeLog>

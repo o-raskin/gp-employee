@@ -23,8 +23,4 @@ public class SuccessCriterionDto {
 
     @Size(max = 1000)
     private String description;
-
-    private boolean achieved;
-
-    private LocalDate finishDate;
 }

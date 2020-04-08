@@ -11,8 +11,7 @@ import ru.olegraskin.suskills.service.SuccessCriterionService;
 @RestController
 @RequestMapping(
         value = "/sc",
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        consumes = MediaType.APPLICATION_JSON_VALUE
+        produces = MediaType.APPLICATION_JSON_VALUE
 )
 @RequiredArgsConstructor
 public class SuccessCriterionController {

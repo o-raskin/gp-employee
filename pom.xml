@@ -12,7 +12,7 @@
 	<artifactId>su-skills</artifactId>
 	<version>1.0.0-RELEASE</version>
 	<name>su-skills</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Skills service for SkillUp project</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -95,6 +95,11 @@
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-chat</artifactId>
 			<version>v1-rev116-1.25.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="04042020000000" author="olegraskin">
+
+        <createTable tableName="grade">
+            <column name="id" type="BIGINT" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="position_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(1023)"/>
+            <column name="grade_progress" type="BIGINT" />
+        </createTable>
+
+        <addUniqueConstraint columnNames="id, position_id"
+                             constraintName="grade_unique_const"
+                             schemaName="public"
+                             tableName="grade"/>
+
+        <addColumn tableName="skill">
+            <column name="grade_id" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="grade_id" references="grade(id)"/>
+            </column>
+        </addColumn>
+
+        <createTable tableName="users">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="grade_id" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="grade_id" references="grade(id)"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

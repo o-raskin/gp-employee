@@ -1,10 +1,12 @@
-package ru.olegraskin.suskills.service;
+package ru.olegraskin.suskills.service.impl;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.olegraskin.suskills.domain.Skill;
+import ru.olegraskin.suskills.exception.BadRequestException;
 import ru.olegraskin.suskills.repository.SkillRepository;
+import ru.olegraskin.suskills.service.SkillService;
 import ru.olegraskin.suskills.service.exception.SkillNotFoundException;
 
 import java.util.HashSet;
@@ -40,16 +42,23 @@ public class SkillServiceImpl implements SkillService {
     public Skill update(@NonNull Skill skill) {
         Optional<Skill> optionalSkill = skillRepository.findById(skill.getId());
         Skill storedSkill = optionalSkill.orElseThrow(() -> new SkillNotFoundException(skill.getId()));
-        storedSkill.setStatus(skill.getStatus());
+
+//        Skill.Status status = skill.getStatus();
+//        if (status.equals(Skill.Status.PENDING) || status.equals(Skill.Status.APPROVED)) {
+//            checkSkillIsCompleted(skill);
+//        }
+//        storedSkill.setStatus(skill.getStatus());
+
         storedSkill.setName(skill.getName());
         storedSkill.setDescription(skill.getDescription());
-        storedSkill.setEndDate(skill.getEndDate());
-        storedSkill.setStartDate(skill.getStartDate());
+//        storedSkill.setEndDate(skill.getEndDate());
+//        storedSkill.setStartDate(skill.getStartDate());
         storedSkill.setChildren(skill.getChildren());
         storedSkill.setParent(skill.getParent());
-        skillRepository.save(storedSkill);
-        return storedSkill;
+        return skillRepository.save(storedSkill);
     }
+
+
 
     @Override
     public void delete(@NonNull Long id) {
@@ -57,5 +66,4 @@ public class SkillServiceImpl implements SkillService {
         Skill storedSkill = skill.orElseThrow(() -> new SkillNotFoundException(id));
         skillRepository.delete(storedSkill);
     }
-
 }
