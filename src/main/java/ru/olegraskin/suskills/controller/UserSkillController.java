@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.olegraskin.suskills.domain.User;
+import ru.olegraskin.suskills.domain.UserSkill;
 import ru.olegraskin.suskills.dto.UserDto;
+import ru.olegraskin.suskills.dto.UserSkillDto;
 import ru.olegraskin.suskills.mapper.UserMapper;
-import ru.olegraskin.suskills.service.UserService;
+import ru.olegraskin.suskills.mapper.UserSkillMapper;
+import ru.olegraskin.suskills.service.UserSkillService;
 
 @RestController
 @RequestMapping(
@@ -19,20 +21,14 @@ import ru.olegraskin.suskills.service.UserService;
 @RequiredArgsConstructor
 public class UserSkillController {
 
-    private final UserService userService;
-    private final UserMapper userMapper;
+    private final UserSkillService userSkillService;
+    private final UserSkillMapper userSkillMapper;
 
     @GetMapping
-    public UserDto getGradeByUserId(@PathVariable("id") Long id) {
-        User user = userService.getUserById(id);
-        return userMapper.entityToDto(user);
-    }
-
-    @GetMapping("/{userId}/skill/{skillId}")
-    public UserDto getUserDataAboutSkill(@PathVariable("userId") Long userId,
+    public UserSkillDto getUserDataAboutSkill(@PathVariable("userId") Long userId,
                                          @PathVariable("skillId") Long skillId) {
-        User user = userService.getUserById(userId);
-        return userMapper.entityToDto(user);
+        UserSkill userSkill = userSkillService.getUserSkillData(userId, skillId);
+        return userSkillMapper.entityToDto(userSkill);
     }
 
 }

@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,8 +21,11 @@ public class User {
     private Long id;
 
     @ManyToOne(cascade = {CascadeType.DETACH})
-    @JoinColumn(name = "grade_id")
     private Grade grade;
+
+    @Min(value = 0)
+    @Max(value = 100)
+    private int gradeProgress;
 
     /**
      * Learned skills by user

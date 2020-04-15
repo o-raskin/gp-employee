@@ -8,4 +8,5 @@
     <include file="db/changelog/04042020000000_add_user_and_grade_tables.xml" relativeToChangelogFile="false"/>
     <include file="db/changelog/07042020000000_add_many_to_many_tables_between_user_skill_and_success_criterion.xml" relativeToChangelogFile="false"/>
     <include file="db/changelog/09042020000000_add_reference_to_previous_in_grade_table.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/15042020000000_add_user_grade_progress.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

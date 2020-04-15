@@ -3,6 +3,8 @@ package ru.olegraskin.suskills.service;
 import ru.olegraskin.suskills.domain.Grade;
 import ru.olegraskin.suskills.domain.Skill;
 
+import java.util.Set;
+
 public interface GradeService {
 
     /**
@@ -12,4 +14,6 @@ public interface GradeService {
      * @return check result
      */
     boolean isAlreadyKnownSkill(Grade grade, Skill skill);
+
+    Set<Grade> getAll();
 }

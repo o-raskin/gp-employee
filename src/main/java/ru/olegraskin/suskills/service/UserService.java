@@ -6,4 +6,6 @@ import ru.olegraskin.suskills.domain.UserSkill;
 public interface UserService {
 
     User getUserById(Long id);
+
+    User update(User user);
 }

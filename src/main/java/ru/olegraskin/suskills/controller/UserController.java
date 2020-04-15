@@ -1,5 +1,10 @@
 package ru.olegraskin.suskills.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.fge.jsonpatch.JsonPatch;
+import com.github.fge.jsonpatch.JsonPatchException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -28,11 +33,22 @@ public class UserController {
 
     private final UserService userService;
     private final UserMapper userMapper;
+    private final ObjectMapper objectMapper;
 
     @GetMapping("/{id}")
-    public UserDto getGradeByUserId(@PathVariable("id") Long id) {
+    public UserDto getUserById(@PathVariable("id") Long id) {
         User user = userService.getUserById(id);
         return userMapper.entityToDto(user);
+    }
+
+    @PatchMapping("/{id}")
+    public UserDto updateUserWithPatch(@PathVariable Long id, @RequestBody JsonPatch patch)
+            throws JsonPatchException, JsonProcessingException {
+        User user = userService.getUserById(id);
+        JsonNode patchedNode = patch.apply(objectMapper.convertValue(user, JsonNode.class));
+        User patchedUser = objectMapper.treeToValue(patchedNode, User.class);
+        User updatedUser = userService.update(patchedUser);
+        return userMapper.entityToDto(updatedUser);
     }
 
 }

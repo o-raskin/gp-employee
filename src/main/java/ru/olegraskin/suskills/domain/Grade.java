@@ -35,10 +35,6 @@ public class Grade {
     @Size(max = 1000)
     private String description;
 
-    @Min(value = 0)
-    @Max(value = 100)
-    private int gradeProgress;
-
     @EqualsAndHashCode.Exclude
     @OneToOne(cascade = {CascadeType.DETACH})
     @JoinColumn(name = "previous_grade_id")
@@ -46,5 +42,6 @@ public class Grade {
 
     @EqualsAndHashCode.Exclude
     @OneToMany
+    @JoinColumn(name = "grade_id")
     private Set<Skill> skills = new HashSet<>();
 }

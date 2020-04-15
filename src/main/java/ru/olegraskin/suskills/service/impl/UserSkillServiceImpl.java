@@ -7,6 +7,8 @@ import ru.olegraskin.suskills.domain.*;
 import ru.olegraskin.suskills.exception.BadRequestException;
 import ru.olegraskin.suskills.repository.UserSkillRepository;
 import ru.olegraskin.suskills.service.GradeService;
+import ru.olegraskin.suskills.service.SkillService;
+import ru.olegraskin.suskills.service.UserService;
 import ru.olegraskin.suskills.service.UserSkillService;
 
 import java.util.Set;
@@ -16,10 +18,14 @@ import java.util.Set;
 public class UserSkillServiceImpl implements UserSkillService {
 
     private final UserSkillRepository userSkillRepository;
+    private final UserService userService;
+    private final SkillService skillService;
     private final GradeService gradeService;
 
     @Override
-    public UserSkill getUserSkillData(@NonNull User user, @NonNull Skill skill) {
+    public UserSkill getUserSkillData(@NonNull Long userId, @NonNull Long skillId) {
+        User user = userService.getUserById(userId);
+        Skill skill = skillService.getById(skillId);
         return userSkillRepository.findUserSkillByUserAndSkill(user, skill)
                 .orElseGet(() -> this.save(user, skill));
     }

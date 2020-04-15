@@ -35,7 +35,9 @@ public class UserSkill {
     @Enumerated
     private Status status = Status.NOT_MANDATORY;
 
+
     public UserSkill(User user, Skill skill) {
+        id = new UserSkillId(user.getId(), skill.getId());
         this.user = user;
         this.skill = skill;
     }

@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
         return optional.orElseGet(() -> this.save(new User(id)));
     }
 
+    @Override
+    public User update(User user) {
+        return userRepository.save(user);
+    }
+
     public User save(User user) {
         return userRepository.save(user);
     }
