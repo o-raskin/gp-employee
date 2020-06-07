@@ -13,8 +13,6 @@ public class GatewayUserDto {
 
     private Long mentorId;
 
-    private int gradeProgress;
-
     public GatewayUserDto(Long id) {
         this.id = id;
     }

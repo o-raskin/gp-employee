@@ -9,4 +9,8 @@
     <include file="db/changelog/07042020000000_add_many_to_many_tables_between_user_skill_and_success_criterion.xml" relativeToChangelogFile="false"/>
     <include file="db/changelog/09042020000000_add_reference_to_previous_in_grade_table.xml" relativeToChangelogFile="false"/>
     <include file="db/changelog/15042020000000_add_user_grade_progress.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/23042020000000_add_editor_in_skill_table.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/24042020000000_add_grade_history_table.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/03052020000000_add_editor_in_userskill_table.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/03052020000001_add_lasteditdate_in_userskill_table.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

@@ -21,4 +21,3 @@ eureka:
     appname: skills
     instance-id: skills:${spring.application.instance-id:${random.value}}
     prefer-ip-address: true
-

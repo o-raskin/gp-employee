@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="24042020000000" author="olegraskin">
+
+        <createTable tableName="grade_history">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="user_id" references="users(id)"/>
+            </column>
+            <column name="grade_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="grade_id" references="grade(id)"/>
+            </column>
+            <column name="achieved_date" type="date"/>
+        </createTable>
+
+        <addPrimaryKey columnNames="user_id, grade_id"
+                       constraintName="pk_user_grade"
+                       schemaName="public"
+                       tableName="grade_history"/>
+
+    </changeSet>
+</databaseChangeLog>
